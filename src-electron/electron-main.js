@@ -101,6 +101,9 @@ function createWindow () {
 
   // Menu.setApplicationMenu(Menu.buildFromTemplate(MainMenus));
   mainWindow.setMenu(Menu.buildFromTemplate(MainMenus))
+  if (process.platform === 'darwin') {
+    app.dock.setMenu(Menu.buildFromTemplate(MainMenus))
+  }
 }
 
 function createPreview () {
