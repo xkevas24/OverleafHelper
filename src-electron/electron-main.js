@@ -51,17 +51,17 @@ const template = [
       { role: 'copy' },
       { role: 'paste' },
       ...(isMac ? [
-        { role: 'pasteAndMatchStyle' },
-        { role: 'delete' },
-        { role: 'selectAll' },
-        { type: 'separator' },
         {
-          label: 'Speech',
+          label: 'Tool',
           submenu: [
             { role: 'startSpeaking' },
             { role: 'stopSpeaking' }
           ]
-        }
+        },
+        { role: 'pasteAndMatchStyle' },
+        { role: 'delete' },
+        { role: 'selectAll' },
+        { type: 'separator' }
       ] : [
         { role: 'delete' },
         { type: 'separator' },
@@ -91,12 +91,6 @@ const template = [
       { role: 'minimize' },
       { role: 'zoom' },
       ...(isMac ? [
-        {
-          label: 'Preview Only',
-          click: async () => {
-            subWindow.webContents.send("smp","HIDE SOURCE");
-          }
-        },
         { type: 'separator' },
         { role: 'front' },
         { type: 'separator' },
