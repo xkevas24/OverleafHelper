@@ -35,7 +35,7 @@ const template = [
   }]),
   // { role: 'fileMenu' }
   {
-    label: 'File',
+    label: '文件',
     submenu: [
       isMac ? { role: 'close' } : { role: 'quit' }
     ]
