@@ -14,33 +14,42 @@ try {
 }
 catch (_) { }
 
+const isMac = process.platform === 'darwin'
 
-const MainMenus = [
-  {
-    label:'This is Main Window!',
-  },
-  {
-    label:'Open Preview Window',
-    click: () => {
-      // console.log(mainFunc.get_url())
-      // subWindow.loadURL(mainWindow.getURL())
-      // subWindow.show()
-      createPreview()
-    }
-  },
-  {
-    label:'Source Only',
-    click: () => {
-      mainWindow.webContents.send("smr","HIDE PREVIEW");
-    }
-  },
-  {
-    label:'Reload',
-    click: () => {
-      mainWindow.reload()
-    }
-  },
-];
+let MainMenus = []
+if (isMac) {
+  MainMenus = [{
+    role: "services"
+  }]
+} else {
+  MainMenus = [
+    {
+      label:'This is Main Window!',
+    },
+    {
+      label:'Open Preview Window',
+      click: () => {
+        // console.log(mainFunc.get_url())
+        // subWindow.loadURL(mainWindow.getURL())
+        // subWindow.show()
+        createPreview()
+      }
+    },
+    {
+      label:'Source Only',
+      click: () => {
+        mainWindow.webContents.send("smr","HIDE PREVIEW");
+      }
+    },
+    {
+      label:'Reload',
+      click: () => {
+        mainWindow.reload()
+      }
+    },
+  ];
+}
+
 
 const SubMenus = [
   {
