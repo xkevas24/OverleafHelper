@@ -30,7 +30,9 @@ const template = [
       { type: 'separator' },
       { role: 'quit' }
     ]
-  }] : []),
+  }] : [{
+    label: "This is Main Window!"
+  }]),
   // { role: 'fileMenu' }
   {
     label: 'File',
@@ -109,41 +111,40 @@ const template = [
         }
       }
     ]
+  },
+  {
+    label: 'Preview Only',
+    click: async () => {
+      subWindow.webContents.send("smp","HIDE SOURCE");
+    }
   }
 ]
-let MainMenus = []
-if (isMac) {
-  MainMenus = [{
-    role: "services"
-  }]
-} else {
-  MainMenus = [
-    {
-      label:'This is Main Window!',
-    },
-    {
-      label:'Open Preview Window',
-      click: () => {
-        // console.log(mainFunc.get_url())
-        // subWindow.loadURL(mainWindow.getURL())
-        // subWindow.show()
-        createPreview()
-      }
-    },
-    {
-      label:'Source Only',
-      click: () => {
-        mainWindow.webContents.send("smr","HIDE PREVIEW");
-      }
-    },
-    {
-      label:'Reload',
-      click: () => {
-        mainWindow.reload()
-      }
-    },
-  ];
-}
+let MainMenus = [
+  {
+    label:'This is Main Window!',
+  },
+  {
+    label:'Open Preview Window',
+    click: () => {
+      // console.log(mainFunc.get_url())
+      // subWindow.loadURL(mainWindow.getURL())
+      // subWindow.show()
+      createPreview()
+    }
+  },
+  {
+    label:'Source Only',
+    click: () => {
+      mainWindow.webContents.send("smr","HIDE PREVIEW");
+    }
+  },
+  {
+    label:'Reload',
+    click: () => {
+      mainWindow.reload()
+    }
+  },
+];
 
 
 const SubMenus = [
