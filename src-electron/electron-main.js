@@ -91,10 +91,16 @@ const template = [
       { role: 'minimize' },
       { role: 'zoom' },
       ...(isMac ? [
+        {
+          label: 'Preview Only',
+          click: async () => {
+            subWindow.webContents.send("smp","HIDE SOURCE");
+          }
+        },
         { type: 'separator' },
         { role: 'front' },
         { type: 'separator' },
-        { role: 'window' }
+        { role: 'window' },
       ] : [
         { role: 'close' }
       ])
