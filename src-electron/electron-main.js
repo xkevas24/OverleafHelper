@@ -51,6 +51,10 @@ const template = [
       { role: 'copy' },
       { role: 'paste' },
       ...(isMac ? [
+        { role: 'pasteAndMatchStyle' },
+        { role: 'delete' },
+        { role: 'selectAll' },
+        { type: 'separator' },
         {
           label: 'Tool',
           submenu: [
@@ -58,10 +62,6 @@ const template = [
             { role: 'stopSpeaking' }
           ]
         },
-        { role: 'pasteAndMatchStyle' },
-        { role: 'delete' },
-        { role: 'selectAll' },
-        { type: 'separator' }
       ] : [
         { role: 'delete' },
         { type: 'separator' },
